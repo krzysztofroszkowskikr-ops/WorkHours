@@ -8,26 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: kivy/kivy:latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-
-    - name: Install dependencies
+    - name: Install buildozer
       run: |
-        python -m pip install --upgrade pip
-        pip install buildozer cython python-for-android
-        pip install kivy==2.3.0 kivymd==0.104.2 reportlab plyer pillow
-
-    - name: Set up Android SDK
-      uses: android-actions/setup-android@v3
-      with:
-        accept-android-sdk-licenses: true
-        packages: 'ndk;25.1.8937393 build-tools;31.0.0 platforms;android-31'
+        apt-get update
+        apt-get install -y buildozer cython3 python3-pip
+        pip3 install --upgrade pip
+        pip3 install buildozer cython
+        pip3 install kivy==2.3.0 kivymd==0.104.2 reportlab plyer pillow
 
     - name: Create buildozer.spec if missing
       run: |
