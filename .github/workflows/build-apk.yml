@@ -26,8 +26,8 @@ jobs:
     - name: Set up Android SDK
       uses: android-actions/setup-android@v3
       with:
-        api-levels: 31
-        ndk-version: 25.1.8937393
+        accept-android-sdk-licenses: true
+        packages: 'ndk;25.1.8937393 build-tools;31.0.0 platforms;android-31'
 
     - name: Create buildozer.spec if missing
       run: |
