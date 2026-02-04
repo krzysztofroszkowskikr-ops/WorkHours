@@ -8,32 +8,40 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: kivy/kivy:latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - name: Install buildozer
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install system dependencies
       run: |
-        apt-get update
-        apt-get install -y buildozer cython3 python3-pip
-        pip3 install --upgrade pip
-        pip3 install buildozer cython
-        pip3 install kivy==2.3.0 kivymd==0.104.2 reportlab plyer pillow
+        sudo apt-get update
+        sudo apt-get install -y \
+          openjdk-11-jdk \
+          android-sdk \
+          google-android-ndk-installer \
+          build-essential \
+          libffi-dev \
+          libssl-dev
 
-    - name: Create buildozer.spec if missing
+    - name: Install Python dependencies
       run: |
-        if [ ! -f buildozer.spec ]; then
-          buildozer init
-        fi
+        python -m pip install --upgrade pip wheel setuptools
+        pip install buildozer cython
+        pip install kivy==2.3.0 kivymd==0.104.2 reportlab plyer pillow
 
-    - name: Build APK
+    - name: Build APK with buildozer
       run: |
         buildozer android debug
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: workhours-debug-apk
         path: bin/*.apk
@@ -46,5 +54,6 @@ jobs:
         files: bin/*.apk
         tag_name: v1.0.0-debug-${{ github.run_number }}
         prerelease: true
+        body: "Debug APK for WorkHours application"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
