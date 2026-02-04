@@ -1,0 +1,134 @@
+"""
+╔══════════════════════════════════════════════════════════════════════════╗
+║          WORKHOURSAPP TESTER - WYMAGANIA I ZALEŻNOŚCI                   ║
+║                                                                          ║
+║  Lista wszystkich pakietów Python wymaganych do uruchomienia testera     ║
+║  Zainstaluj: pip install -r requirements_tester.txt                     ║
+╚══════════════════════════════════════════════════════════════════════════╝
+"""
+
+# ══════════════════════════════════════════════════════════════════════════
+# CORE DEPENDENCIES - Niezbędne do działania testera
+# ══════════════════════════════════════════════════════════════════════════
+
+# Kivy - Framework UI dla aplikacji mobilnych
+Kivy==2.3.0
+
+# KivyMD - Material Design komponenty dla Kivy
+KivyMD==0.104.2
+
+# Python Kivy Garden - Rozszerzenia Kivy
+kivy-garden==0.1.5
+
+# ══════════════════════════════════════════════════════════════════════════
+# DATABASE & DATA - Obsługa baz danych i danych
+# ══════════════════════════════════════════════════════════════════════════
+
+# SQLite - Wbudowany, ale listujemy na wypadek
+# sqlite3 (część stdlib Python)
+
+# ══════════════════════════════════════════════════════════════════════════
+# PDF GENERATION - Generowanie raportów PDF
+# ══════════════════════════════════════════════════════════════════════════
+
+# ReportLab - PDF generation library
+ReportLab==4.0.7
+
+# ══════════════════════════════════════════════════════════════════════════
+# IMAGE PROCESSING - Obsługa obrazów
+# ══════════════════════════════════════════════════════════════════════════
+
+# Pillow - Image processing library
+Pillow==10.0.1
+
+# ══════════════════════════════════════════════════════════════════════════
+# DEVELOPMENT DEPENDENCIES - Do testowania i debugowania
+# ══════════════════════════════════════════════════════════════════════════
+
+# pytest - Testing framework
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+
+# Code Quality Tools
+black==23.12.0         # Code formatter
+flake8==6.1.0          # Linter
+mypy==1.7.0            # Static type checker
+pylint==3.0.3          # Code analyzer
+
+# ══════════════════════════════════════════════════════════════════════════
+# UTILITIES - Narzędzia pomocnicze
+# ══════════════════════════════════════════════════════════════════════════
+
+# Dataclasses support (Python 3.11+ ma built-in)
+# dataclasses (część stdlib)
+
+# Requests - HTTP library (przyszłe API)
+requests==2.31.0
+
+# Python-dateutil - Date utilities
+python-dateutil==2.8.2
+
+# Cryptography - For future encryption
+cryptography==41.0.7
+
+# ══════════════════════════════════════════════════════════════════════════
+# ANDROID INTEGRATION - Integracja z Androidem
+# ══════════════════════════════════════════════════════════════════════════
+
+# Plyer - Platform-agnostic Python API to platform features
+plyer==2.1.0
+
+# PyJNI - Python JNI bindings for Android
+PyJNI==1.5.2
+
+# ══════════════════════════════════════════════════════════════════════════
+# BUILD & DEPLOYMENT - Budowanie i deployment
+# ══════════════════════════════════════════════════════════════════════════
+
+# Buildozer - Build APK from Kivy
+buildozer==1.4.11
+
+# Cython - Required by Buildozer
+Cython==3.0.8
+
+# ══════════════════════════════════════════════════════════════════════════
+# OPTIONAL - Opcjonalne dla zaawansowanych features
+# ══════════════════════════════════════════════════════════════════════════
+
+# Matplotlib - For charts and graphs (future feature)
+# matplotlib==3.8.2
+# numpy==1.24.3
+
+# APScheduler - For scheduling tasks
+APScheduler==3.10.4
+
+# ══════════════════════════════════════════════════════════════════════════
+# VERSIONS - Informacje o wersjach
+# ══════════════════════════════════════════════════════════════════════════
+
+"""
+TESTING VERSIONS (4 lutego 2026):
+- Python: 3.11.7
+- Kivy: 2.3.0
+- KivyMD: 0.104.2
+- Android SDK: 35
+- Android Min: 26 (Android 8.0)
+
+COMPATIBILITY:
+✓ Windows 10+
+✓ macOS 10.14+
+✓ Linux (Ubuntu 18.04+)
+✓ Android 8.0+ (API 26-35)
+
+INSTALLATION:
+1. python -m venv venv
+2. Activate venv
+3. pip install -r requirements_tester.txt
+4. python tester_app.py
+
+TROUBLESHOOTING:
+- If Pillow fails: pip install --upgrade pillow
+- If Kivy fails: pip install --pre kivy
+- If compilation issues: pip install --no-binary :all: kivy
+"""

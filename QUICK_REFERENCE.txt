@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""
+WorkHours - Quick Reference Card
+Skróty i polecenia dla Phase 3.3
+"""
+
+# ============================================================================
+# PHASE 3.3 - ANDROID BUILD & INSTALLATION QUICK REFERENCE
+# ============================================================================
+
+# SETUP (First time only)
+# ====================
+# python configure_android_paths.py --auto
+# Expected: buildozer.spec updated with SDK/NDK paths
+
+
+# VERIFY (Always before building)
+# ===============================
+# python verify_android_env.py
+# Expected: All 5 checks ✅
+
+
+# BUILD DEBUG APK (For testing)
+# =============================
+# python build_apk.py --type debug
+# Expected: bin/workhours-1.0.0-debug.apk (~85MB)
+# Time: 5-15 minutes
+
+
+# BUILD RELEASE APK (For Google Play)
+# ===================================
+# python build_apk.py --type release
+# Expected: bin/workhours-1.0.0-release.apk (~50-60MB)
+# Time: 10-20 minutes
+
+
+# CLEAN BUILD (If previous failed)
+# ================================
+# python build_apk.py --type debug --clean
+# Removes .buildozer/ and bin/ directories before building
+
+
+# INSTALL ON DEVICE
+# =================
+# 1. Connect phone via USB
+# 2. Enable Developer Mode & USB Debugging
+# 3. python install_apk.py
+# Expected: ✅ APK installed successfully
+
+
+# INSTALL SPECIFIC APK
+# ====================
+# python install_apk.py --apk bin/workhours-1.0.0-debug.apk
+
+
+# LIST DEVICES
+# ============
+# adb devices -l
+# Expected: List of connected devices
+
+
+# UNINSTALL APP
+# =============
+# adb uninstall org.workhours
+
+
+# LOGS FROM APP
+# =============
+# adb logcat | findstr WorkHours
+
+
+# HELPER SCRIPTS LOCATION
+# =======================
+# e:\MobileApp_Paulina\
+# ├── configure_android_paths.py
+# ├── verify_android_env.py
+# ├── build_apk.py
+# └── install_apk.py
+
+
+# IMPORTANT FILES
+# ===============
+# buildozer.spec          - Android configuration
+# bin/                    - Built APK output
+# src/                    - Application source code
+# .buildozer/             - Build artifacts (can be deleted)
+
+
+# DOCUMENTATION
+# ==============
+# PHASE3_README.md                      - Overview
+# PHASE3_SESSION1_INIT.md               - Buildozer setup
+# PHASE3_SESSION2_ANDROID_SETUP.md      - SDK/NDK installation
+# PHASE3_SESSION3_BUILD_INSTALL.md      - Build & install guide
+# PHASE3_SESSION4_GOOGLE_PLAY.md        - Google Play submission
+# PROJECT_STATUS.md                     - Complete project status
+
+
+# TROUBLESHOOTING
+# ===============
+# Problem: "adb not found"
+# Solution: Add Android SDK to PATH
+#   C:\Users\YourUser\AppData\Local\Android\Sdk\platform-tools
+
+# Problem: "No connected devices"
+# Solution: Check USB connection, enable USB Debugging
+
+# Problem: "Build failed"
+# Solution: Run verify_android_env.py to diagnose
+
+
+# DISK SPACE REQUIREMENTS
+# =======================
+# Android SDK:         ~30GB
+# Android NDK r25b:    ~15GB
+# Gradle cache:        ~5GB
+# Build artifacts:     ~10GB
+# Total:               ~60GB minimum
+# Recommend:           100GB for comfort
+
+
+# BUILD TIMES (Windows)
+# ====================
+# First build:    10-15 minutes
+# Clean build:    5-10 minutes
+# Incremental:    2-5 minutes
+# Installation:   1-3 minutes
+# Total (first):  15-25 minutes
+
+
+# NEXT PHASE AFTER SUCCESS
+# ========================
+# After APK successfully installed and tested:
+# 1. Type: kontynuuj phase3.4
+# 2. Follow Google Play deployment guide
+# 3. Create release keystore
+# 4. Build release APK
+# 5. Submit to Google Play
+
+
+# KEY DIRECTORIES
+# ===============
+# Project:     e:\MobileApp_Paulina\
+# Source:      src/
+# Tests:       tests/
+# APK Output:  bin/
+# Build Cache: .buildozer/
+# Config:      buildozer.spec
+
+
+# QUICK CHECKLIST
+# ===============
+# [ ] SDK/NDK installed (check via verify script)
+# [ ] buildozer.spec has correct paths
+# [ ] Phone connected via USB
+# [ ] USB Debugging enabled on phone
+# [ ] Python 3.8+ installed
+# [ ] Buildozer installed (pip install buildozer)
+# [ ] 30+ GB disk space available
+# [ ] Configure paths script run
+# [ ] Verify environment script passed all checks
+# [ ] APK built successfully
+# [ ] APK installed on phone
+# [ ] App works on phone ✅
+
+
+# ENVIRONMENT VARIABLES (Optional)
+# ================================
+# export ANDROID_SDK_ROOT="/path/to/android/sdk"
+# export ANDROID_NDK_ROOT="/path/to/android/ndk"
+# export JAVA_HOME="/path/to/java"
+# export PATH=$PATH:"/path/to/android/sdk/platform-tools"
+
+
+# GRADLE PROPERTIES (If needed)
+# =============================
+# In ~/.gradle/gradle.properties:
+# org.gradle.jvmargs=-Xmx4096m
+# org.gradle.parallel=true
+# org.gradle.daemon=true
+
+
+# ============================================================================
+# REMEMBER: Type "kontynuuj" to continue to next phase!
+# ============================================================================
